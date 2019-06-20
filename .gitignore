@@ -3,3 +3,17 @@
 # Example .gitignore files: https://github.com/github/gitignore
 /bower_components/
 /node_modules/
+/bluepoints.pde
+/bluepoints_2.pde
+/hallo.php
+/undefined
+/styles/style3.css
+/styles/style2.css
+/styles/style1.css
+/styles/layout.css
+/styles/_vti_cnf/style3.css
+/styles/_vti_cnf/style2.css
+/styles/_vti_cnf/style1.css
+/styles/_vti_cnf/layout.css
+/partify.html
+/mysketch.pde

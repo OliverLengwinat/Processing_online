@@ -5,15 +5,6 @@ PGraphics pg_art, pg_invisible;
 double old_error = 10000000;
 int shapes_used, shapes_total =0;
 
-selectInput("Select a file to process:", "fileSelected");
-
-void fileSelected(File selection) {
-  if (selection == null) {
-    println("Window was closed or the user hit cancel.");
-  } else {
-    println("User selected " + selection.getAbsolutePath());
-  }
-}
 
 double compare(PImage p1, PGraphics p2) {
   long difference = 0;
@@ -35,22 +26,28 @@ double compare(PImage p1, PGraphics p2) {
 }
 
 void setup() {
-  size(480, 360);
+	size(400, 200);
 
-  noStroke();
-  textAlign(CENTER);
-  textSize(11);
+  	noStroke();
+  	textAlign(CENTER);
+  	textSize(11);
   
-  ellipseMode(CENTER);
+  	ellipseMode(CENTER);
 
-  img = loadImage("dalmatian_smaller.jpg");  // Load the image into the program 
-  println ("input width: "+img.width+", height: "+img.height);
+	//load image
+	img = createImage(200, 200, RGB);
+	img.loadPixels();
+	for (int i = 0; i < img.pixels.length; i++) {
+	  img.pixels[i] = color(input_image_data[i*4+0],input_image_data[i*4+1],input_image_data[i*4+2]); 
+	}
+	img.updatePixels();  
+	println ("input width: "+img.width+", height: "+img.height);
   
   //show original image
   //image(img, 0,0, width/2,height);
   
-  pg_art = createGraphics(img.width,img.height);
-  pg_invisible = createGraphics(img.width,img.height);
+  	pg_art = createGraphics(img.width,img.height);
+  	pg_invisible = createGraphics(img.width,img.height);
 }
 
 void draw() {

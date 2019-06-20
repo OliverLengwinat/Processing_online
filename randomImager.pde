@@ -70,11 +70,11 @@ void draw() {
   //image(pg_invisible, width/2,0);
   
   shapes_total ++;
-  double new_error = compare(img,pg_invisible);
+  //double new_error = compare(img,pg_invisible);
+  double new_error = old_error-1000;
   if (new_error < old_error){
     println("new error: "+new_error);
     old_error = new_error;
-    //pg_art = pg_invisible;
     //pg_art = createGraphics(img.width,img.height);
     pg_art.beginDraw();
     pg_art.loadPixels();
@@ -104,7 +104,7 @@ void draw() {
   //draw last try, successful or not
   noFill();
   stroke(random_color);
-  pg_invisible.ellipse(posx,posy,size,size);
+  ellipse(posx+width/2,posy,size,size);
   //triangle(newshape[0]+width/2,newshape[1],newshape[2]+width/2,newshape[3],newshape[4]+width/2,newshape[5]);
   
 }

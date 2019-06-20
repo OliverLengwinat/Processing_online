@@ -97,25 +97,25 @@
 			</div>
 
 			<img id="input_img">
-			<canvas id="input_canvas"></canvas>
+			<canvas id="input_canvas" width=200 height=200></canvas>
 			<!--<script type="text/processing" data-processing-target="processing-canvas" src="test_bluepoints.js"></script>
 			<canvas id="processing-canvas"> </canvas>-->
 			<!--<canvas data-processing-sources="randomImager.pde"></canvas>-->
 
-			<div id="msg">
+			<!--<div id="msg">
 			</div>
 			<div id="msg2">
-			</div>
+			</div>-->
 			<!--<canvas data-processing-sources="test.pde"></canvas>-->
-    		<script type="application/javascript">
-         		var jsString = "Hello from JavaScript!";
+    		<!--<script type="application/javascript">
          		var printMessage = function (msg) {
 					document.getElementById('msg').innerHTML = "Message: " + msg;
          		};
-			</script>
+			</script>-->
 			<script type="application/javascript">
 				var input_image = null;
 				var input_image_data = null;
+
 				function loadImageFileAsURL(event)
 				{
 					var selectedFile = event.target.files[0];
@@ -133,7 +133,7 @@
 							ctx.drawImage(imageInput, 0, 0);
     						input_image_data = ctx.getImageData(0, 0, input_canvas.width, input_canvas.height).data;
 							startProcessing();
-							document.getElementById('msg2').innerHTML = "Image data: " + input_image_data.toString();
+							//document.getElementById('msg2').innerHTML = "Image data: " + input_image_data.toString();
 						};
 						fileReader.readAsDataURL(selectedFile);
 					}
@@ -143,15 +143,12 @@
 					//add processing canvas
 					var pcanvas = document.createElement('canvas');
 					pcanvas.id = 'processing-canvas';
+					pcanvas.width = 200;
+					pcanvas.heigth = 200;
 					document.getElementById('mainContent').appendChild(pcanvas);
   					var p = Processing.loadSketchFromSources(pcanvas, ['test.pde']);
   					//$('#loader').append(canvasRef);
 				}
-
-         		var jsString = "Hello from JavaScript!";
-         		var printMessage = function (msg) {
-					document.getElementById('msg').innerHTML = "Message: " + msg;
-         		};
 
 			</script>
 		</div>

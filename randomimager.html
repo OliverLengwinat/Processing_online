@@ -1,0 +1,140 @@
+<!doctype html>
+<meta charset="utf-8">
+<html>
+	<head>
+		<title>Oliver Lengwinat</title>
+
+		<style>
+        body {
+        background-color: #FFF; /* example... */
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        color: #333;
+        /*padding: 20px;*/
+        padding: 5px;
+        }
+
+        div.outer {
+            text-align: center;
+            white-space:nowrap;
+        }
+
+        div.horizontalLarge {
+            display:inline-block;
+            width: 40%;
+        }
+
+        div.horizontalSmall{
+            display:inline-block;
+            /*margin: 0 auto;*/
+            padding: 0;
+            /*width: 15%;*/
+        }
+
+        div.right{
+            margin: 0 auto;
+            float:right;
+        }
+
+        table {
+            /*border: 1px solid black;*/
+        }
+
+        div.withborder {
+            border-width:2px;
+            border-style:solid;
+            border-color:black;
+            width:1250px;
+            background-color: #e3e1ef;
+        }
+
+		.slidecontainer {
+			width: 100%;
+		}
+
+		.slider {
+			-webkit-appearance: none;
+			width: 100%;
+			height: 15px;
+			border-radius: 5px;
+			background: #d3d3d3;
+			outline: none;
+			opacity: 0.7;
+			-webkit-transition: .2s;
+			transition: opacity .2s;
+		}
+
+		.slider:hover {
+			opacity: 1;
+		}
+
+		.slider::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			background: #4CAF50;
+			cursor: pointer;
+		}
+
+		.slider::-moz-range-thumb {
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			background: #D00000;
+			cursor: pointer;
+		}
+    </style>
+
+		<script src="processing.js"></script>
+	</head>
+
+	<body>
+		<div id="mainContent">
+			<h1>(Testing Processing)</h1>
+			<div id='img_choice'>
+				Upload Image : <input type="file" onchange="loadImageFileAsURL(event)" value="chose picture">
+			</div>
+
+			<img id="input_img">
+			<!--<script type="text/processing" data-processing-target="processing-canvas" src="test_bluepoints.js"></script>
+			<canvas id="processing-canvas"> </canvas>-->
+			<!--<canvas data-processing-sources="randomImager.pde"></canvas>-->
+
+			<div id="msg">
+			</div>
+			<canvas data-processing-sources="test.pde"></canvas>
+    		<script type="application/javascript">
+         		var jsString = "Hello from JavaScript!";
+         		var printMessage = function (msg) {
+					document.getElementById('msg').innerHTML = "Message: " + msg;
+         		};
+			</script>
+			<script type="application/javascript">
+				var input_image = null;
+				function loadImageFileAsURL(event)
+				{
+					var selectedFile = event.target.files[0];
+					if (selectedFile.type.match("image.*"))
+					{
+						var fileReader = new FileReader();
+						fileReader.onload = function(fileLoadedEvent)
+						{
+							var imageInput = document.getElementById("input_img");
+							var input_image = fileLoadedEvent.target.result;
+							imageInput.src = input_image;
+						};
+						fileReader.readAsDataURL(selectedFile);
+					}
+				}
+
+         		var jsString = "Hello from JavaScript!";
+         		var printMessage = function (msg) {
+					document.getElementById('msg').innerHTML = "Message: " + msg;
+         		};
+
+			</script>
+		</div>
+
+	</body>
+</html>

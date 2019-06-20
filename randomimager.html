@@ -97,6 +97,7 @@
 			</div>
 
 			<img id="input_img">
+			<canvas id="input_canvas"></canvas>
 			<!--<script type="text/processing" data-processing-target="processing-canvas" src="test_bluepoints.js"></script>
 			<canvas id="processing-canvas"> </canvas>-->
 			<!--<canvas data-processing-sources="randomImager.pde"></canvas>-->
@@ -124,9 +125,20 @@
 						{
 							var imageInput = document.getElementById("input_img");
 							input_image = fileLoadedEvent.target.result;
-							imageInput.src = input_image;
+							imageInput.src = input_image; //show image
+
+							var ctx = input_canvas.getContext("2d");
+							//var img = document.getElementById("imageInput");
+							ctx.drawImage(imageInput, 0, 0);
+    						//ctx.drawImage(input_image, 0, 0);
+    						var imgData = ctx.getImageData(0, 0, input_canvas.width, input_canvas.height);
 							startProcessing();
-							document.getElementById('msg2').innerHTML = "Image: " + input_image;
+							//document.getElementById('msg2').innerHTML = "Image: " + input_image;
+							red=imgData.data[0];
+							green=imgData.data[1];
+							blue=imgData.data[2];
+							alpha=imgData.data[3];
+							document.getElementById('msg2').innerHTML = "Image data: " + imgData.data.toString();
 						};
 						fileReader.readAsDataURL(selectedFile);
 						//fileReader.onloadend = () => startProcessing();

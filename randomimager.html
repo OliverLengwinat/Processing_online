@@ -103,7 +103,7 @@
 
 			<div id="msg">
 			</div>
-			<canvas data-processing-sources="test.pde"></canvas>
+			<!--<canvas data-processing-sources="test.pde"></canvas>-->
     		<script type="application/javascript">
          		var jsString = "Hello from JavaScript!";
          		var printMessage = function (msg) {
@@ -112,6 +112,7 @@
 			</script>
 			<script type="application/javascript">
 				var input_image = null;
+				var input_image_name = null;
 				function loadImageFileAsURL(event)
 				{
 					var selectedFile = event.target.files[0];
@@ -122,10 +123,21 @@
 						{
 							var imageInput = document.getElementById("input_img");
 							var input_image = fileLoadedEvent.target.result;
+							var input_image_name = input_image.name;
 							imageInput.src = input_image;
 						};
 						fileReader.readAsDataURL(selectedFile);
+						fileReader.onloadend = () => startProcessing();
 					}
+				}
+
+				function startProcessing(){
+					//add processing canvas
+					var pcanvas = document.createElement('canvas');
+					pcanvas.id = 'processing-canvas';
+					document.getElementById('mainContent').appendChild(pcanvas);
+  					var p = Processing.loadSketchFromSources(pcanvas, ['test.pde']);
+  					//$('#loader').append(canvasRef);
 				}
 
          		var jsString = "Hello from JavaScript!";

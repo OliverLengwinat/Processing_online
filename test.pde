@@ -5,6 +5,9 @@ void setup() {
 		//Pimg img = input_image;
 		//Pimg img = loadImage("dalmatian_smaller.jpg");
 		//image(img,0,0);
+		//img.loadPixels(); 
+		
+		printMessage("input: "+input_image_data);
 
 	}
 	

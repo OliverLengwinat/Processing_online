@@ -125,7 +125,8 @@
 						{
 							var imageInput = document.getElementById("input_img");
 							input_image = fileLoadedEvent.target.result;
-							imageInput.src = input_image; //show image
+							imageInput.src = input_image; //show the image...
+							imageInput.style.display = 'none'; //...except we don't show the image
 
 							var ctx = input_canvas.getContext("2d");
 							//var img = document.getElementById("imageInput");

@@ -1,5 +1,3 @@
-/* @pjs preload=input_image; */
-
 void setup() {
 	//printMessage(jsString + " " + processingString); //function defined in JavaScript
 	if (input_image==null)	printMessage("no Image found");
